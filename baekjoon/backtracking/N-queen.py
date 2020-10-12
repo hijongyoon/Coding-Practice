@@ -6,20 +6,18 @@ low_li = []
 
 def promising(level, cols):  # 같은 열이거나 같은 대각선인지 검사하는 것.
     for i in range(level):
-        if cols[i] == cols[level]:  # 같은 열인가?
-            return False
+        # if cols[i] == cols[level]:  # 같은 열인가?
+        #     return False
         if level - i == abs(cols[level] - cols[i]):  # 같은 대각선 인가?
             return False
     return True
 
 
 def queen(level, n, cols, num):
-    global count
-    global low_li
+    global count, low_li
     if not promising(level, cols):
         return False
     elif level == n - 1:
-        print(cols)
         count += 1
         return True
     for i in range(n):
@@ -38,7 +36,7 @@ def main():
     global count
     n = int(sys.stdin.readline())
     cols = [-1] * n
-    queen(-1, n, cols,-1)
+    queen(-1, n, cols, -1)
     print(count)
 
 
